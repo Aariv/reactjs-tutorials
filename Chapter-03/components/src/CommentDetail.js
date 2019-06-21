@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 const CommentDetail = (props) => {
     return (
@@ -14,7 +13,7 @@ const CommentDetail = (props) => {
                 <div className="metadata">
                     <span className="date">{props.timeAgo}</span>
                 </div>
-                <div className="text">{props.text}</div>
+                <div className="text">{props.content}</div>
             </div>
         </div>
     );
