@@ -12,10 +12,10 @@ class App extends React.Component {
   		return { transform: `matrix3d(${sin}, ${-cos}, ${sin}, 0, ${-cos}, ${sin}, 0, 0, 0, ${cos}, ${cos}, ${sin}, 0, 0, 0, 1)` };
 	}
 
-	onMouseOver = (event) => {
+	onMouseMove = (event) => {
 		this.setState({
-				styleOne: transform(-event.clientX / event.clientY),
-				styleTwo: transform(event.clientX / event.clientY)
+				styleOne: this.transform(-event.clientX / event.clientY),
+				styleTwo: this.transform(event.clientX / event.clientY)
 		});
 	}
 
