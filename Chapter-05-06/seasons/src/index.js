@@ -5,6 +5,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import SeasonDisplay from "./SeasonDisplay";
+import Spinner from './Spinner';
+
 class App extends React.Component {
 
     // We have some more methods which will be useful in the following usecase
@@ -37,17 +40,36 @@ class App extends React.Component {
         );
     }
 
-    /**
-     * This method should be available / defined which has to return some jsx.
-     */
-    render() {
+    renderContent = () => {
         if (this.state.errorMessage && !this.state.lat) {
             return <div>Error: {this.state.errorMessage}</div>
         }
-        if(!this.state.errorMessage && this.state.lat) {
-            return <div>Lat: {this.state.lat}</div>;
+        if (!this.state.errorMessage && this.state.lat) {
+            return <SeasonDisplay lat={this.state.lat} />
+
         }
-        return <div>Loading..........</div>
+        return <Spinner message = "Please allow location request"/>
+    }
+
+    /**
+     * This method should be available / defined which has to return some jsx.
+     * 
+     * We should not use return statement in the render method. WE have to try to avoid return statement inside the render method.
+     */
+    render() {
+        // if (this.state.errorMessage && !this.state.lat) {
+        //     return <div>Error: {this.state.errorMessage}</div>
+        // }
+        // if (!this.state.errorMessage && this.state.lat) {
+        //     return <div className="ui red">
+        //         <SeasonDisplay lat={this.state.lat} />
+        //     </div>
+        // }
+        // return <Spinner />
+
+        return <div className="border red">
+            {this.renderContent()}
+        </div>
     }
 }
 
